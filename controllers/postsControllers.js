@@ -31,12 +31,22 @@ const store = (req, res) =>{
 
 //update
 const update = (req, res)=>{
-  res.send(`Modifico l'elemento con id ${req.params.id} `)
+ const post = posts.find(post => post.id == req.params.id)
+ for(let key in req.body){
+  post[key] = req.body[key]
+ }
+
+ res.json(post)
 }
 
 //modify
 const modify = (req, res)=>{
-  res.send(`Modifico alcune proprietà dell'elemento con id ${req.params.id}`)
+  const post = posts.find(post => post.id == req.params.id)
+ for(let key in req.body){
+  post[key] = req.body[key]
+ }
+
+ res.json(post)
 }
 
 //destroy
