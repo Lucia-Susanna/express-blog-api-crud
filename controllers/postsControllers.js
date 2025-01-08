@@ -3,12 +3,16 @@ const posts = require('../data/posts');
 //index
 
 const index = (req, res) => {
-  res.send('Visualizzo la lista dei post')
+  let postsList = posts
+
+  res.json(postsList)
 }
 
 //show
 const show = (req,res) =>{
-  res.send (`Visualizzo il post con id ${req.params.id}`)
+  const post = posts.find(post => post.id == req.params.id)
+
+  res.json(post)
 }
 
 //store
@@ -27,8 +31,11 @@ const modify = (req, res)=>{
 }
 
 //destroy
-const destroy = (req,res)=>{
-  res.send(`Elimino elemento con id ${req.params.id}`)
+const destroy = (req, res)=>{
+  const post = posts.find(post => post.id == req.params.id)
+
+  posts.splice(posts.indexOf(post), 1)
+  res.sendStatus(204)
 }
 
 module.exports = {
