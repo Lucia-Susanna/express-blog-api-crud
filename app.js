@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
   res.send('server dei post')
 })
 
-app.use('/posts', postsRouter)
+app.use('/posts', postsRouter);
 
 app.listen(port, () => {
   console.log(`sono in ascolto alla porta ${port}`)

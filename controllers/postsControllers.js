@@ -9,19 +9,19 @@ const index = (req, res) => {
 }
 
 //show
-const show = (req,res) =>{
+const show = (req, res) =>{
   const post = posts.find(post => post.id == req.params.id)
 
   res.json(post)
 }
 
 //store
-const store = (req,res) =>{
+const store = (req, res) =>{
   res.send('Nuovo post')
 }
 
 //update
-const update = (req,res)=>{
+const update = (req, res)=>{
   res.send(`Modifico l'elemento con id ${req.params.id} `)
 }
 
@@ -35,7 +35,7 @@ const destroy = (req, res)=>{
   const post = posts.find(post => post.id == req.params.id)
 
   posts.splice(posts.indexOf(post), 1)
-  res.sendStatus(204)
+  res.status(204)
 }
 
 module.exports = {
