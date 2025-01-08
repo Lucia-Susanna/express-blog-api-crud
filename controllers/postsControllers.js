@@ -17,7 +17,16 @@ const show = (req, res) =>{
 
 //store
 const store = (req, res) =>{
-  res.send('Nuovo post')
+  const id = posts.at(-1).id + 1;
+  const newPost = {
+    id,
+    ...req.body
+  }
+
+  posts.push(newPost);
+
+  res.status(201);
+  res.json(posts);
 }
 
 //update
