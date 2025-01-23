@@ -9,14 +9,14 @@ const index = (req, res) => {
 }
 
 //show
-const show = (req, res) =>{
+const show = (req, res) => {
   const post = posts.find(post => post.id == req.params.id)
 
   res.json(post)
 }
 
 //store
-const store = (req, res) =>{
+const store = (req, res) => {
   const id = posts.at(-1).id + 1;
   const newPost = {
     id,
@@ -30,31 +30,31 @@ const store = (req, res) =>{
 }
 
 //update
-const update = (req, res)=>{
- const post = posts.find(post => post.id == req.params.id)
- for(let key in req.body){
-  post[key] = req.body[key]
- }
+const update = (req, res) => {
+  const post = posts.find(post => post.id == req.params.id)
+  for (let key in req.body) {
+    post[key] = req.body[key]
+  }
 
- res.json(post)
+  res.json(post)
 }
 
 //modify
-const modify = (req, res)=>{
+const modify = (req, res) => {
   const post = posts.find(post => post.id == req.params.id)
- for(let key in req.body){
-  post[key] = req.body[key]
- }
+  for (let key in req.body) {
+    post[key] = req.body[key]
+  }
 
- res.json(post)
+  res.json(post)
 }
 
 //destroy
-const destroy = (req, res)=>{
+const destroy = (req, res) => {
   const post = posts.find(post => post.id == req.params.id)
 
   posts.splice(posts.indexOf(post), 1)
-  res.status(204)
+  res.sendStatus(204)
 }
 
 module.exports = {
